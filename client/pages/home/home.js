@@ -1,40 +1,12 @@
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+
 // pages/home/home.js
 Page({
   /**
    * Page initial data
    */
   data: {
-    productList: [{
-      id: 1,
-      image: 'https://s3.cn-north-1.amazonaws.com.cn/u-img/product1.jpg',
-      name: '商品1',
-      price: 100,
-      source: '国内·广东',
-    }, {
-      id: 2,
-      image: 'https://s3.cn-north-1.amazonaws.com.cn/u-img/product2.jpg',
-      name: '商品2',
-      price: 200,
-      source: '国内·广东',
-    }, {
-      id: 3,
-      image: 'https://s3.cn-north-1.amazonaws.com.cn/u-img/product3.jpg',
-      name: '商品3',
-      price: 300,
-      source: '国内·广东',
-    }, {
-      id: 4,
-      image: 'https://s3.cn-north-1.amazonaws.com.cn/u-img/product4.jpg',
-      name: '商品4',
-      price: 400,
-      source: '国内·广东',
-    }, {
-      id: 5,
-      image: 'https://s3.cn-north-1.amazonaws.com.cn/u-img/product5.jpg',
-      name: '商品5',
-      price: 500,
-      source: '国内·广东',
-    }], // 商品列表
+    productList: [], // 商品列表
 
   },
 
@@ -42,7 +14,37 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    this.getProductList()
+  },
 
+  getProductList(){
+    wx.showLoading({
+      title: '商品数据加载中...',
+    })
+    qcloud.request({
+      url: 'https://xg7cr459.qcloud.la/weapp/product',
+      success: result => {
+        wx.hideLoading()
+        if(!result.data.code){
+          this.setData({
+            productList: result.data.data
+          })
+        }else{  
+          wx.showToast({
+            icon: 'none',
+            title: '商品数据加载失败',
+          })
+        }
+
+      },
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '商品数据加载失败',
+        })
+      }
+    })
   },
 
   /**
