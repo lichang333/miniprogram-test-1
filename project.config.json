@@ -8,6 +8,7 @@
 	},
 	"appid": "wxee3d66abae85d704",
 	"projectname": "miniprogram-test-1",
+	"compileType": "miniprogram",
 	"condition": {
 		"search": {
 			"current": -1,

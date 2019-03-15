@@ -129,7 +129,7 @@
   align-items: center;
 }
 
-.opr-trolley,
+.opr-cart,
 .opr-buy {
   flex: 1;
   height: 100rpx;
@@ -140,7 +140,7 @@
   font-weight: bold;
 }
 
-.opr-trolley {
+.opr-cart {
   background: rgba(245, 224, 105, 0.6);
 }
 
