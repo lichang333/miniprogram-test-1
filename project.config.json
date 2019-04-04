@@ -1,14 +1,15 @@
 {
-	"client": "client/",
-	"svr": "server/",
-	"miniprogramRoot": "client/",
-	"qcloudRoot": "server/",
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
 	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wxee3d66abae85d704",
-	"projectname": "miniprogram-test-1",
-	"compileType": "miniprogram",
+	"projectname": "cn-wechat-term2",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -26,13 +27,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
-					"name": "detail",
+					"name": "商品详情页",
 					"pathName": "pages/detail/detail",
-					"scene": null
+					"query": ""
 				}
 			]
 		}

@@ -3,7 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://xg7cr459.qcloud.la';
+var host = 'https://xg7cr459.qcloud.la/';
 
 var config = {
 
@@ -23,11 +23,20 @@ var config = {
     // 上传图片接口
     uploadUrl: `${host}/weapp/upload`,
 
-    // 拉取商品列表
+    // 获取产品列表
     productList: `${host}/weapp/product`,
 
-    // 拉取商品详情
-    productDetail: `${host}/weapp/product/`
+    // 获取产品详情
+    productDetail: `${host}/weapp/product/`,
+
+    // 拉取用户信息
+    user: `${host}/weapp/user`,
+
+    // 创建订单
+    addOrder: `${host}/weapp/order`,
+
+    // 获取已购买订单列表
+    orderList: `${host}/weapp/order`,
   }
 };
 

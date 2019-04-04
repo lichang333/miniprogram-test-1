@@ -1,98 +1,103 @@
-const qcloud = require('../../vendor/wafer2-client-sdk/index')
-
 // pages/home/home.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config.js')
+
 Page({
+
   /**
-   * Page initial data
+   * 页面的初始数据
    */
   data: {
     productList: [], // 商品列表
-
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
-  onLoad: function (options) {
-    this.getProductList()
-  },
-
-  getProductList(){
+  getProductList() {
     wx.showLoading({
       title: '商品数据加载中...',
     })
+
     qcloud.request({
-      url: 'https://xg7cr459.qcloud.la/weapp/product',
+      url: config.service.productList,
       success: result => {
         wx.hideLoading()
-        if(!result.data.code){
+
+        let data = result.data
+        if (!data.code) {
           this.setData({
-            productList: result.data.data
+            productList: data.data
           })
-        }else{  
+        } else {
           wx.showToast({
             icon: 'none',
-            title: '商品数据加载失败',
+            title: '商品数据加载错误',
           })
         }
-
       },
-      fail: result => {
+
+      fail: () => {
         wx.hideLoading()
+
         wx.showToast({
           icon: 'none',
-          title: '商品数据加载失败',
+          title: '商品数据加载错误',
         })
       }
     })
   },
 
   /**
-   * Lifecycle function--Called when page is initially rendered
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.getProductList()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
-   * Lifecycle function--Called when page show
+   * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
 
   /**
-   * Lifecycle function--Called when page hide
+   * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+  
   },
 
   /**
-   * Lifecycle function--Called when page unload
+   * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+  
   },
 
   /**
-   * Page event handler function--Called when user drop down
+   * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+  
   },
 
   /**
-   * Called when page reach bottom
+   * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+  
   },
 
   /**
-   * Called when user click on the top right corner to share
+   * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+  
   }
 })
