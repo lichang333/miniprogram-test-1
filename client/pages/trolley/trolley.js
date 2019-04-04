@@ -18,19 +18,25 @@ Page({
 
   },
 
-  onTapLogin: function () {
-    app.login({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo,
-          locationAuthType: app.data.locationAuthType
-        })
-      },
-      error: () => {
-        this.setData({
-          locationAuthType: app.data.locationAuthType
-        })
-      }
+  onTapLogin: function (e) {
+    // app.login({
+    //   success: ({ userInfo }) => {
+    //     this.setData({
+    //       userInfo,
+    //       locationAuthType: app.data.locationAuthType
+    //     })
+    //   },
+    //   error: () => {
+    //     this.setData({
+    //       locationAuthType: app.data.locationAuthType
+    //     })
+    //   }
+    // })
+
+    console.log(e.detail.userInfo);
+
+    this.setData({
+      userInfo: e.detail.userInfo
     })
   },
 
