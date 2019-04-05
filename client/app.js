@@ -21,6 +21,11 @@ App({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo'] === false) {
+          wx.getUserInfo({
+            success(res){
+              console.log(res.userInfo)
+            }
+          })
 
           this.data.locationAuthType = UNAUTHORIZED
           // 已拒绝授权
