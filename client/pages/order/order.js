@@ -11,7 +11,42 @@ Page({
   data: {
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
-    orderList: [], // 订单列表
+    orderList: [
+      {
+        id: 0,
+        list: [{
+          count: 1,
+          image: 'https://xg7cr459.qcloud.la/product2.jpg',
+          name: '商品1',
+          price: 50.5,
+        }]
+      },
+      {
+        id: 1,
+        list: [{
+          count: 1,
+          image: 'https://xg7cr459.qcloud.la/product2.jpg',
+          name: '商品1',
+          price: 50.5,
+        },
+        {
+          count: 1,
+          image: 'https://xg7cr459.qcloud.la/product3.jpg',
+          name: '商品2',
+          price: 50.5,
+        }
+        ]
+      },
+      {
+        id: 2,
+        list: [{
+          count: 1,
+          image: 'https://xg7cr459.qcloud.la/product3.jpg',
+          name: '商品2',
+          price: 50.5,
+        }]
+      }
+    ], // 订单列表
   },
 
   /**
@@ -21,26 +56,10 @@ Page({
   },
 
   onTapLogin: function (e) {
-    // app.login({
-    //   success: ({ userInfo }) => {
-    //     this.setData({
-    //       userInfo,
-    //       locationAuthType: app.data.locationAuthType
-    //     })
-    //   },
-    //   error: () => {
-    //     this.setData({
-    //       locationAuthType: app.data.locationAuthType
-    //     })
-    //   }
-    // })
-
     console.log(e.detail.userInfo);
-
     this.setData({
       userInfo: e.detail.userInfo
     })
-
     this.getOrder()
   },
 
